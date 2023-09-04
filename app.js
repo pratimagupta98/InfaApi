@@ -11,17 +11,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 //require
- 
+
 const admin = require("./routes/admin")
 const bgImage = require("./routes/bgImage")
+const user = require("./routes/user")
+const infPlan = require("./routes/infPlan")
 
- 
+
+
 //use
- 
+
 
 app.use("/", admin);
 app.use("/", bgImage);
- 
+app.use("/", user);
+app.use("/", infPlan);
+
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });

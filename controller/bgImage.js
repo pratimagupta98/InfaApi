@@ -12,29 +12,29 @@ cloudinary.config({
 });
 
 exports.addBgimg = async (req, res) => {
-      if (req.files) {
-        if (req.files.img[0].path) {
-          alluploads = [];
-          for (let i = 0; i < req.files.img.length; i++) {
-            const resp = await cloudinary.uploader.upload(
-              req.files.img[i].path,
-              { use_filename: true, unique_filename: false }
-            );
-            fs.unlinkSync(req.files.img[i].path);
-            alluploads.push(resp.secure_url);
-          }
-        
+  if (req.files) {
+    if (req.files.img[0].path) {
+      alluploads = [];
+      for (let i = 0; i < req.files.img.length; i++) {
+        const resp = await cloudinary.uploader.upload(
+          req.files.img[i].path,
+          { use_filename: true, unique_filename: false }
+        );
+        fs.unlinkSync(req.files.img[i].path);
+        alluploads.push(resp.secure_url);
+      }
 
-          const newBgimg = new Bgimg({
-            img: alluploads, // Assuming 'img' is a field in your model
-            // Other fields you want to set
-          });
-     
+
+      const newBgimg = new Bgimg({
+        img: alluploads, // Assuming 'img' is a field in your model
+        // Other fields you want to set
+      });
+
       newBgimg.save()
 
 
-    .then((data) => resp.successr(res, data))
-    .catch((error) => resp.errorr(res, error));
-}
-}
+        .then((data) => resp.successr(res, data))
+        .catch((error) => resp.errorr(res, error));
+    }
+  }
 }
