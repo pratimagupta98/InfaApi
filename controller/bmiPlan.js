@@ -5,7 +5,7 @@ exports.createBmiPlan = async (req, res) => {
     try {
         const { planname, short_desc, title, long_desc, highlight_desc, upload_pdf, plan_max, plan_deductible, coverageAmt, start_date, end_date, total, email, coverage_area, dob } = req.body;
 
-        const folderObj = new InfPlan({
+        const folderObj = new BmiPlan({
             planname,
             short_desc,
             title,
@@ -41,7 +41,7 @@ exports.createBmiPlan = async (req, res) => {
 
 
 
-exports.infPlanList = async (req, res) => {
+exports.bmilanList = async (req, res) => {
     await BmiPlan.find()
         .then((result) => {
             res.json(result);
@@ -66,3 +66,4 @@ exports.getOnePlan = async (req, res, next) => {
         },
     });
 }
+

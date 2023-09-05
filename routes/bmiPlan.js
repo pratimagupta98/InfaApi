@@ -5,14 +5,14 @@ const fs = require("fs");
 
 
 const {
-    addInfPlan,
-    infPlanList,
+    createBmiPlan,
+    bmilanList,
     getOnePlan
 
 } = require("../controller/bmiPlan");
 
-router.post("/user/addInfPlan", addInfPlan);
-router.get("/user/infPlanList", infPlanList);
+router.post("/user/createBmiPlan", createBmiPlan);
+router.get("/user/bmilanList", bmilanList);
 router.get("/user/getOnePlan/:id", getOnePlan);
 
 

@@ -16,6 +16,8 @@ const admin = require("./routes/admin")
 const bgImage = require("./routes/bgImage")
 const user = require("./routes/user")
 const infPlan = require("./routes/infPlan")
+const bmiPlan = require("./routes/bmiPlan")
+
 
 
 
@@ -26,6 +28,8 @@ app.use("/", admin);
 app.use("/", bgImage);
 app.use("/", user);
 app.use("/", infPlan);
+app.use("/", bmiPlan);
+
 
 
 app.get("/", (req, res) => {
