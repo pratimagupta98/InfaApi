@@ -1,4 +1,5 @@
 const InfPlan = require("../models/infPlan");
+const resp = require("../helpers/apiResponse");
 
 
 exports.addInfPlan = async (req, res) => {
@@ -65,3 +66,17 @@ exports.getOnePlan = async (req, res, next) => {
         },
     });
 }
+
+
+exports.edit_infPlan = async (req, res) => {
+    await InfPlan.findOneAndUpdate(
+      {
+        _id: req.params.id,
+      },
+      { $set: req.body },
+      { new: true }
+    )
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
+  
