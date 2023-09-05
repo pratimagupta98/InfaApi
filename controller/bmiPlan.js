@@ -39,9 +39,7 @@ exports.createBmiPlan = async (req, res) => {
     }
 }
 
-
-
-exports.bmilanList = async (req, res) => {
+exports.bmiPlanList = async (req, res) => {
     await BmiPlan.find()
         .then((result) => {
             res.json(result);
@@ -66,4 +64,10 @@ exports.getOnePlan = async (req, res, next) => {
         },
     });
 }
+
+
+
+
+
+
 

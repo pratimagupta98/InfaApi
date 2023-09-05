@@ -11,6 +11,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+
 exports.addBgimg = async (req, res) => {
   if (req.files) {
     if (req.files.img[0].path) {
