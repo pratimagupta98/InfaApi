@@ -2,6 +2,7 @@ const BmiPlan = require("../models/bmiPlan");
 const dotenv = require("dotenv");
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
+const resp = require("../helpers/apiResponse");
 
 dotenv.config();
 cloudinary.config({
@@ -91,7 +92,76 @@ exports.getOnePlan = async (req, res, next) => {
     });
 }
 
-
+exports.editPlanDetail = async(req,res)=>{
+    const{planname, short_desc, title, long_desc, highlight_desc, upload_pdf, plan_max, plan_deductible, coverageAmt, start_date, end_date, total, email, coverage_area, dob} = req.body
+    
+    data ={}
+    if(planname) {
+        data.planname = planname
+    }
+    if(short_desc){
+        data.short_desc = short_desc
+    }
+    if(title){
+        data.title = title
+    }
+    if(long_desc){
+        data.long_desc = long_desc
+    }
+    if(highlight_desc){
+        data.highlight_desc = highlight_desc
+    }
+    if(plan_max){
+        data.plan_max = plan_max
+    }
+    if(plan_deductible){
+        data.plan_deductible = plan_deductible
+    }
+    if(coverageAmt){
+        data.coverageAmt = coverageAmt
+    }
+    if(start_date){
+        data.start_date = start_date
+    }
+    if(end_date){
+        data.end_date = end_date
+    }
+    if(total){
+        data.total = total
+    }
+    if(email){
+        data.email = email
+    }
+    if(coverage_area){
+        data.coverage_area = coverage_area
+    }
+    if(dob){
+        data.dob = dob
+    }
+    if (req.files) {
+        if (req.files.upload_pdf) {
+          alluploads = [];
+          for (let i = 0; i < req.files.upload_pdf.length; i++) {
+            // console.log(i);
+            const resp = await cloudinary.uploader.upload(req.files.upload_pdf[i].path, {
+              use_filename: true,
+              unique_filename: false,
+            });
+            fs.unlinkSync(req.files.upload_pdf[i].path);
+            alluploads.push(resp.secure_url);
+          }
+          // newStore.storeImg = alluploads;
+          data.upload_pdf = alluploads;
+        }
+     }
+     await BmiPlan.findOneAndUpdate(
+        { _id: req.params.id},
+        { $set: data },
+        { new: true }
+      )
+        .then((data) => resp.successr(res, data))
+        .catch((error) => resp.errorr(res, error));
+    };
 
 
 

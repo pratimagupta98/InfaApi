@@ -7,7 +7,8 @@ const fs = require("fs");
 const {
     createBmiPlan,
     bmiPlanList,
-    getOnePlan
+    getOnePlan,
+    editPlanDetail
 
 } = require("../controller/bmiPlan");
 
@@ -47,6 +48,8 @@ const storage = multer.diskStorage({
   ]);
 
 router.post("/user/createBmiPlan",multipleUpload, createBmiPlan);
+router.post("/admin/editPlanDetail/:id",multipleUpload, editPlanDetail);
+
 router.get("/user/bmiPlanList", bmiPlanList);
 router.get("/user/getOnePlan/:id", getOnePlan);
 
