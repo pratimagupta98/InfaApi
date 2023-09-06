@@ -1,4 +1,14 @@
 const BmiPlan = require("../models/bmiPlan");
+const dotenv = require("dotenv");
+const cloudinary = require("cloudinary").v2;
+const fs = require("fs");
+
+dotenv.config();
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 
 exports.createBmiPlan = async (req, res) => {
@@ -6,23 +16,39 @@ exports.createBmiPlan = async (req, res) => {
         const { planname, short_desc, title, long_desc, highlight_desc, upload_pdf, plan_max, plan_deductible, coverageAmt, start_date, end_date, total, email, coverage_area, dob } = req.body;
 
         const folderObj = new BmiPlan({
-            planname,
-            short_desc,
-            title,
-            long_desc,
-            highlight_desc,
+            planname:planname,
+            short_desc:short_desc,
+            title:title,
+            long_desc:long_desc,
+            highlight_desc:highlight_desc,
             upload_pdf,
-            plan_max,
-            plan_deductible,
-            coverageAmt,
-            start_date,
-            end_date,
-            total,
-            email,
-            coverage_area,
-            dob
+            plan_max:plan_max,
+            plan_deductible:plan_deductible,
+            coverageAmt:coverageAmt,
+            start_date:start_date,
+            end_date:end_date,
+            total:total,
+            email:email,
+            coverage_area:coverage_area,
+            dob:dob
         });
 
+
+        if (req.files) {
+            if (req.files.upload_pdf[0].path) {
+              alluploads = [];
+              for (let i = 0; i < req.files.upload_pdf.length; i++) {
+                const resp = await cloudinary.uploader.upload(
+                  req.files.upload_pdf[i].path,
+                  { use_filename: true, unique_filename: false }
+                );
+                fs.unlinkSync(req.files.upload_pdf[i].path);
+                alluploads.push(resp.secure_url);
+              }
+              folderObj.upload_pdf = alluploads;
+            }
+          }
+         // folderObj.save()
         await folderObj.save();
 
         res.status(201).json({

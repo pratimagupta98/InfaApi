@@ -20,7 +20,7 @@ const thisSchema = new Schema(
             type: String
         },
         upload_pdf: {
-            type: String
+            type: Array
         },
         plan_max: {
             type: String

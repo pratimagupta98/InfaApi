@@ -5,8 +5,8 @@ const fs = require("fs");
 
 
 const {
-    addBgimg
-  
+  addBgimg
+
 } = require("../controller/bgImage");
 
 const storage = multer.diskStorage({
@@ -40,12 +40,12 @@ let uploads = multer({ storage: storage });
 
 let multipleUpload = uploads.fields([
   { name: "img", maxCount: 1 },
- 
+
 ]);
 
 //PATHS
 
 router.post("/admin/addBgimg", multipleUpload, addBgimg);
- 
+
 
 module.exports = router;
