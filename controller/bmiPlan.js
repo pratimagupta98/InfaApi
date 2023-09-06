@@ -66,7 +66,7 @@ exports.createBmiPlan = async (req, res) => {
 }
 
 exports.bmiPlanList = async (req, res) => {
-    await BmiPlan.find()
+    await BmiPlan.find().populate("planname")
         .then((result) => {
             res.json(result);
         })
