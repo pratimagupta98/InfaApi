@@ -77,7 +77,7 @@ exports.bmiPlanList = async (req, res) => {
 }
 
 exports.getOnePlan = async (req, res, next) => {
-    const Plan = await BmiPlan.findById(req.params.id);
+    const Plan = await BmiPlan.findById(req.params.id).populate("planname")
     // VideoModel.findOne({ _id: req.params.id })
 
     if (!Plan) {
