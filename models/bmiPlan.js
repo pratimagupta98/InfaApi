@@ -23,7 +23,7 @@ const thisSchema = new Schema(
             type: Array
         },
         plan_max: {
-            type: String
+            type: Number
         },//dropdown
         plan_deductible: {
             type: Number
