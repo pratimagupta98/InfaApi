@@ -51,7 +51,7 @@ router.post("/user/createBmiPlan",multipleUpload, createBmiPlan);
 router.post("/admin/editPlanDetail/:id",multipleUpload, editPlanDetail);
 
 router.get("/user/bmiPlanList", bmiPlanList);
-router.get("/user/getOnePlan/:id", getOnePlan);
+router.get("/admin/getOnePlan/:id", getOnePlan);
 
 
 module.exports = router;
