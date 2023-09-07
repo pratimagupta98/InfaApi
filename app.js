@@ -17,6 +17,7 @@ const bgImage = require("./routes/bgImage")
 const user = require("./routes/user")
 const infPlan = require("./routes/infPlan")
 const bmiPlan = require("./routes/bmiPlan")
+const agent = require("./routes/agent")
 
 
 
@@ -29,6 +30,7 @@ app.use("/", bgImage);
 app.use("/", user);
 app.use("/", infPlan);
 app.use("/", bmiPlan);
+app.use("/", agent);
 
 
 
