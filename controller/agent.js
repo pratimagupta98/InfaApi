@@ -27,10 +27,8 @@ exports.agentRegistration = async (req, res) => {
             phone: phone,
 
         });
-
-
-        if (req.files) {
-            if (req.files.image[0].path) {
+        if (req.files.image) {
+          //  if (req.files.image[0].path) {
                 alluploads = [];
                 for (let i = 0; i < req.files.image.length; i++) {
                     const resp = await cloudinary.uploader.upload(
@@ -40,9 +38,13 @@ exports.agentRegistration = async (req, res) => {
                     fs.unlinkSync(req.files.image[i].path);
                     alluploads.push(resp.secure_url);
                 }
+
+
+              
+            
                 folderObj.image = alluploads;
             }
-        }
+     //   }
         // folderObj.save()
         await folderObj.save();
 
@@ -149,3 +151,24 @@ exports.delAgent= async (req, res) => {
       .then((data) => resp.deleter(res, data))
       .catch((error) => resp.errorr(res, error));
   };
+
+
+  exports.logoutAgent = async (req, res) => {
+    const token = req.headers.authorization.split(" ")[1];
+    //  console.log("token", token)
+    const decoded = jwt.verify(token, key);
+    //  console.log("decoded", decoded)
+    const astroId = decoded.astroId;
+    //console.log("astroId", astroId)
+    await Astrologer.findOneAndUpdate(
+      {
+        _id: astroId,
+      },
+      { $set: { status: "Offline", callingStatus: "Not available" } }
+    );
+    res.status(200).json({
+      status: true,
+      msg: "Logged out successfully",
+    });
+  };
+  

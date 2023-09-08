@@ -63,10 +63,6 @@ router.post("/admin/adminlogin", adminlogin);
 
 router.get("/admin/viewoneadmin/:id", viewoneadmin);
 router.post("/admin/editprofile/:id", multipleUpload, editprofile);
-router.post("/admin/astologerCommision", astologerCommision);
-router.post("/admin/updateComision/:id", updateComision);
-router.get("/admin/viewoneCommision", viewoneCommision);
-router.get("/admin/getAdminEarnings", getAdminEarnings);
-
+  
 
 module.exports = router;

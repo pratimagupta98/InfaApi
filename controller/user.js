@@ -59,7 +59,6 @@ exports.studentSingup = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
-
 exports.studentlogin = async (req, res) => {
   const { mobile, email, password } = req.body;
   const admin = await Admin.findOne({
@@ -156,8 +155,6 @@ exports.editprofile = async (req, res) => {
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
-
-
 // exports.birth_details = async (req, res) => {
 
 
@@ -189,8 +186,6 @@ exports.editprofile = async (req, res) => {
 //   }
 // })
 // }
-
-
 const axios = require('axios');
 // exports.authentication = async (req, res) => {
 //   // Define the URL
@@ -296,6 +291,7 @@ exports.authentication = async (req, res) => {
   try {
     const response = await axios.post(url, payload);
 
+
     // Store the generated token
     authToken = response.data.token; // Adjust this based on the actual token structure you receive.
 
@@ -315,9 +311,9 @@ exports.quote = async (req, res) => {
     // Define the request headers with the Bearer token and content type
     const headers = {
       //   'accept': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5MzQ4MjAwNywiZXhwIjoxNjkzNDgyNjA3LCJpYXQiOjE2OTM0ODIwMDcsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.q-PlrIsjS6fie1wve0l_JLx4AQ14gI1IGdkL4guT07A', // Replace with your actual Bearer token
-        'Content-Type': 'application/json',
-    
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5MzQ4MjAwNywiZXhwIjoxNjkzNDgyNjA3LCJpYXQiOjE2OTM0ODIwMDcsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.q-PlrIsjS6fie1wve0l_JLx4AQ14gI1IGdkL4guT07A', // Replace with your actual Bearer token
+      'Content-Type': 'application/json',
+
       'accept': 'application/json',
       'Authorization': 'Bearer ' + authToken,
       'Content-Type': 'application/json',
@@ -359,9 +355,9 @@ exports.quoteAll = async (req, res) => {
     // Define the request headers with the Bearer token and content type
     const headers = {
       //   'accept': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5MzQ4MjAwNywiZXhwIjoxNjkzNDgyNjA3LCJpYXQiOjE2OTM0ODIwMDcsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.q-PlrIsjS6fie1wve0l_JLx4AQ14gI1IGdkL4guT07A', // Replace with your actual Bearer token
-        'Content-Type': 'application/json',
-    
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5MzQ4MjAwNywiZXhwIjoxNjkzNDgyNjA3LCJpYXQiOjE2OTM0ODIwMDcsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.q-PlrIsjS6fie1wve0l_JLx4AQ14gI1IGdkL4guT07A', // Replace with your actual Bearer token
+      'Content-Type': 'application/json',
+
       'accept': 'application/json',
       'Authorization': 'Bearer ' + authToken,
       'Content-Type': 'application/json',

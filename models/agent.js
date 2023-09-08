@@ -8,7 +8,7 @@ const thisSchema = new Schema(
             type: String,
         },
         agentCode: {
-            type: String,
+            type: Number,
         },
         email: {
             type: String,

@@ -245,3 +245,23 @@ exports.getAdminEarnings = async (req, res) => {
   })
 
 };
+
+
+exports.logoutAdmin = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  //  console.log("token", token)
+  const decoded = jwt.verify(token, key);
+  //  console.log("decoded", decoded)
+  const astroId = decoded.astroId;
+  //console.log("astroId", astroId)
+  await Astrologer.findOneAndUpdate(
+    {
+      _id: astroId,
+    },
+    { $set: { status: "Offline", callingStatus: "Not available" } }
+  );
+  res.status(200).json({
+    status: true,
+    msg: "Logged out successfully",
+  });
+};
