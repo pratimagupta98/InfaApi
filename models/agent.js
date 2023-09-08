@@ -26,7 +26,7 @@ const thisSchema = new Schema(
             type: String,
         },
         phone: {
-            type: String,
+            type: Number,
         },
         image: {
             type: Array
