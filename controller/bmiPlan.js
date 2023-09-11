@@ -14,7 +14,7 @@ cloudinary.config({
 
 exports.createBmiPlan = async (req, res) => {
     try {
-        const { planname, short_desc, title, long_desc, highlight_desc, upload_pdf, plan_max, plan_deductible, coverageAmt, start_date, end_date, total, email, coverage_area, dob } = req.body;
+        const { planname, short_desc, title, long_desc, highlight_desc, upload_pdf, plan_max, plan_deductible, coverageAmt, start_date, end_date, total, email, coverage_area, dob,filterdata } = req.body;
 
         const folderObj = new BmiPlan({
             planname:planname,
@@ -31,7 +31,8 @@ exports.createBmiPlan = async (req, res) => {
             total:total,
             email:email,
             coverage_area:coverage_area,
-            dob:dob
+            dob:dob,
+            filterdata:filterdata
         });
 
 

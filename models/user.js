@@ -46,6 +46,18 @@ const thisSchema = new Schema(
         },
         email:{
             type:"String"  
+        },
+        referenceId:{
+            type:"String"  
+        },
+        fromDate:{
+            type:"String" 
+        },
+        toDate:{
+            type:"String" 
+        },
+        travelers:{
+            type:Array 
         }
 
     },

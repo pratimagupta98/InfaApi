@@ -48,6 +48,9 @@ const thisSchema = new Schema(
         },
         dob:{
             type: String
+        },
+        filterdata:{
+            type: String
         }
 
     },
