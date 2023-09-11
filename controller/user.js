@@ -307,11 +307,11 @@ exports.authentication = async (req, res) => {
 exports.quote = async (req, res) => {
   try {
     const url = 'https://api.bmicos.com/bmiecommerce/sandbox/api/v1/ecommerce/Quote';
-    var authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQxODA4NiwiZXhwIjoxNjk0NDE4Njg2LCJpYXQiOjE2OTQ0MTgwODYsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.vG1YFcpum3soWRK7DOqbw5suzWSufRNVt49FyC2r2hU';
+    var authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQyNDExNCwiZXhwIjoxNjk0NDI0NzE0LCJpYXQiOjE2OTQ0MjQxMTQsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.cec4FJQQ2GD0HHJQHbOVZK0YV2K_33q6ZW4AcSl2rWY';
     // Define the request headers with the Bearer token and content type
     const headers = {
       //   'accept': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQxODA4NiwiZXhwIjoxNjk0NDE4Njg2LCJpYXQiOjE2OTQ0MTgwODYsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.vG1YFcpum3soWRK7DOqbw5suzWSufRNVt49FyC2r2hU', // Replace with your actual Bearer token
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQyNDExNCwiZXhwIjoxNjk0NDI0NzE0LCJpYXQiOjE2OTQ0MjQxMTQsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.cec4FJQQ2GD0HHJQHbOVZK0YV2K_33q6ZW4AcSl2rWY', // Replace with your actual Bearer token
       'Content-Type': 'application/json',
 
       'accept': 'application/json',
@@ -337,9 +337,9 @@ exports.quote = async (req, res) => {
 
     // Make a POST request to the URL with the payload and headers
     const response = await axios.post(url, payload, { headers });
-
+    const createaDate = await User.create(payload);
     // Handle the response data here
-    res.status(200).json({ message: response.data });
+    res.status(200).json({ message: response.data,email:req.body.email,maximum:req.body.maximum,area:req.body.area });
   } catch (error) {
     // Handle errors
     //  console.error('Error:', error);

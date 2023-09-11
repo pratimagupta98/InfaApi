@@ -38,6 +38,15 @@ const thisSchema = new Schema(
                 },
             },
         ],
+        area:{
+            type:"String"
+        },
+        maximum:{
+            type:"String"
+        },
+        email:{
+            type:"String"  
+        }
 
     },
     { timestamps: true }
