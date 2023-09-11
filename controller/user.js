@@ -307,11 +307,11 @@ exports.authentication = async (req, res) => {
 exports.quote = async (req, res) => {
   try {
     const url = 'https://api.bmicos.com/bmiecommerce/sandbox/api/v1/ecommerce/Quote';
-    var authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQxNzE0MSwiZXhwIjoxNjk0NDE3NzQxLCJpYXQiOjE2OTQ0MTcxNDEsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.rih9ePpJV2uuKkR0y4q1UjknbfEqd_zJ9pmy4g1b_w0';
+    var authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQxODA4NiwiZXhwIjoxNjk0NDE4Njg2LCJpYXQiOjE2OTQ0MTgwODYsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.vG1YFcpum3soWRK7DOqbw5suzWSufRNVt49FyC2r2hU';
     // Define the request headers with the Bearer token and content type
     const headers = {
       //   'accept': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQxNzE0MSwiZXhwIjoxNjk0NDE3NzQxLCJpYXQiOjE2OTQ0MTcxNDEsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.rih9ePpJV2uuKkR0y4q1UjknbfEqd_zJ9pmy4g1b_w0', // Replace with your actual Bearer token
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibWlfYyI6IjEwMTUiLCJibWlfdSI6IjBZekI2Y0pMVWQiLCJyb2xlIjoiRWNvbW1lcmNlUm9sZSIsIm5iZiI6MTY5NDQxODA4NiwiZXhwIjoxNjk0NDE4Njg2LCJpYXQiOjE2OTQ0MTgwODYsImlzcyI6ImJtaWNvcy5jb20iLCJhdWQiOiJibWljb3MuY29tIn0.vG1YFcpum3soWRK7DOqbw5suzWSufRNVt49FyC2r2hU', // Replace with your actual Bearer token
       'Content-Type': 'application/json',
 
       'accept': 'application/json',
