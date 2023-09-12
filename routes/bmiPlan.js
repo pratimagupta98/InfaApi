@@ -8,7 +8,8 @@ const {
     createBmiPlan,
     bmiPlanList,
     getOnePlan,
-    editPlanDetail
+    editPlanDetail,
+    adminPlanlist
 
 } = require("../controller/bmiPlan");
 
@@ -52,6 +53,7 @@ router.post("/admin/editPlanDetail/:id",multipleUpload, editPlanDetail);
 
 router.get("/user/bmiPlanList", bmiPlanList);
 router.get("/admin/getOnePlan/:id", getOnePlan);
+router.post("/user/adminPlanlist", adminPlanlist);
 
 
 module.exports = router;

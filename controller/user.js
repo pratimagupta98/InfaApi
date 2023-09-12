@@ -416,4 +416,30 @@ exports.auth = async (req, res) => {
 
 
 
+exports.adminPlan = async (req, res) => {
+   try{
+       
+    const { email,fromDate,toDate,area,maximum ,dob} = req.body;
 
+    const folderObj = new User({
+      email,
+      fromDate,
+      toDate,
+      area,
+      maximum,                                                       
+      dob
+    })
+    await folderObj.save()
+    res.status(201).json({
+      msg: "Plan created successfully",
+      success: true,
+  });
+   }
+catch{
+  res.status(500).json({
+    msg: "Something went wrong",
+    error: error.message,
+    success: false,
+});
+}
+}

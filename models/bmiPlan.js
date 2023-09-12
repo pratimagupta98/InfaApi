@@ -31,11 +31,11 @@ const thisSchema = new Schema(
         coverageAmt: {
             type: Number
         },//input
-        start_date: {
-            type: String
+        fromDate:{
+            type:"String" 
         },
-        end_date: {
-            type: String
+        toDate:{
+            type:"String" 
         },
         total: {
             type: Number

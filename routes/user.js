@@ -9,7 +9,8 @@ const {
   authentication,
   quote,
   auth,
-  quoteAll
+  quoteAll,
+  adminPlan
  
 } = require("../controller/user");
  
@@ -18,6 +19,7 @@ router.post("/user/quote",quote );
 router.post("/user/QuoteAll",quoteAll );
 
 router.post("/user/auth",auth );
+router.post("/user/adminPlan",adminPlan );
 
 
 module.exports = router;
