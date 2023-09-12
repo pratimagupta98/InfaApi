@@ -179,9 +179,9 @@ exports.adminPlanlist = async (req, res) => {
                 { fromDate: { $gte: fromDate } },
                 { toDate: { $lte: toDate } }
             ]
-        });
+        }).populate("planname")
 
-        console.log("result", result);
+       // console.log("result", result);
         res.json(result);
     } catch (err) {
         console.error("Error:", err);
