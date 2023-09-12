@@ -31,11 +31,11 @@ const thisSchema = new Schema(
         coverageAmt: {
             type: Number
         },//input
-        fromDate:{
-            type:"String" 
+        fromDate: {
+            type: "String"
         },
-        toDate:{
-            type:"String" 
+        toDate: {
+            type: "String"
         },
         total: {
             type: Number
@@ -46,11 +46,11 @@ const thisSchema = new Schema(
         coverage_area: {
             type: String
         },
-        dob:{
+        dob: {
             type: String
         },
-        filterdata:{
-            type: String
+        filterdata: {
+            type: String // TRAVELASSIST,FIXED,NETWORK,BASIC,PRE-EX
         }
 
     },

@@ -188,6 +188,19 @@ exports.adminPlanlist = async (req, res) => {
         res.status(500).send(err);
     }
 };
+exports.PlanlistByFilterdata = async (req, res) => {
+  
+
+    try {
+        let result = await BmiPlan.find({filterdata:req.params.id }).populate("planname")
+
+       // console.log("result", result);
+        res.json(result);
+    } catch (err) {
+        console.error("Error:", err);
+        res.status(500).send(err);
+    }
+};
 
 
 
