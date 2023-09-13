@@ -416,26 +416,55 @@ exports.auth = async (req, res) => {
 
 
 
-exports.adminPlan = async (req, res) => {
+exports.planPurchase = async (req, res) => {
    try{
        
-    const { email,fromDate,toDate,area,maximum ,dob} = req.body;
+    const { email,fromDate,toDate,area,maximum ,dob,referenceId,trip_startdate,trip_enddate,departure,destination,additional_avg_cov,visitor_first_name,visitor_last_name,visitor_dob,gender,passport_no,contactNo,emergency_contact_name,emergency_contact_phone,emergency_contact_email,reference,plan ,payment_method,card_holder_name,paymentAddress,payment_email,card_number,card_expiry_date,card_cvv,city,state,postal_code,order_total} = req.body;
 
     const folderObj = new User({
-      email,
+      email, 
       fromDate,
       toDate,
       area,
-      maximum,                                                       
-      dob
+      maximum,
+      referenceId,
+      dob ,
+      trip_startdate,
+      trip_enddate,
+      departure,
+      destination,
+      additional_avg_cov,
+      visitor_first_name,
+      visitor_last_name,
+      visitor_dob,
+      gender,
+      passport_no,
+      contactNo,
+      emergency_contact_name,
+      emergency_contact_phone,
+      emergency_contact_email,
+      paymentAddress,
+      city,
+      state,
+      postal_code,
+      order_total,
+      reference,
+      plan,
+      payment_method,
+      card_holder_name,
+      payment_email,
+      card_number,
+      card_expiry_date,
+      card_cvv
+
     })
     await folderObj.save()
     res.status(201).json({
-      msg: "Plan created successfully",
+      msg: "created successfully",
       success: true,
   });
    }
-catch{
+catch(error){
   res.status(500).json({
     msg: "Something went wrong",
     error: error.message,
