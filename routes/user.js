@@ -10,7 +10,8 @@ const {
   quote,
   auth,
   quoteAll,
-  planPurchase
+  planPurchase,
+  memberList
  
 } = require("../controller/user");
  
@@ -20,6 +21,8 @@ router.post("/user/QuoteAll",quoteAll );
 
 router.post("/user/auth",auth );
 router.post("/user/planPurchase",planPurchase );
+router.get("/admin/memberList",memberList );
+
 
 
 module.exports = router;

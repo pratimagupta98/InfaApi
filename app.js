@@ -21,10 +21,7 @@ const agent = require("./routes/agent")
 
 
 
-
 //use
-
-
 app.use("/", admin);
 app.use("/", bgImage);
 app.use("/", user);

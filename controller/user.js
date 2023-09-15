@@ -472,3 +472,13 @@ catch(error){
 });
 }
 }
+
+exports.memberList = async (req, res) => {
+  await User.find()
+      .then((result) => {
+          res.json(result);
+      })
+      .catch((err) => {
+          res.send(err);
+      });
+}

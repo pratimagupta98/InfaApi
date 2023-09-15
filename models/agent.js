@@ -30,6 +30,9 @@ const thisSchema = new Schema(
         },
         image: {
             type: Array
+        },
+        commision:{
+            type :Number
         }
     },
     { timestamps: true }

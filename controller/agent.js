@@ -14,11 +14,11 @@ cloudinary.config({
 
 exports.agentRegistration = async (req, res) => {
     try {
-        const { agentName, agentCode, email, address, city, state, zipcode, phone } = req.body;
+        const { agentName, commision, email, address, city, state, zipcode, phone } = req.body;
 
         const folderObj = new Agent({
             agentName: agentName,
-            agentCode: agentCode,
+            commision: commision,
             email: email,
             address: address,
             city: city,
