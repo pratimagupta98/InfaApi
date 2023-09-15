@@ -482,3 +482,43 @@ exports.memberList = async (req, res) => {
           res.send(err);
       });
 }
+
+
+exports.memberlogin = async (req, res) => {
+  const { mobile, email, password } = req.body;
+  const admin = await Admin.findOne({
+    $or: [{ mobile: mobile }, { email: email }],
+  });
+  if (admin) {
+    const validPass = await bcrypt.compare(password, admin.password);
+    if (validPass) {
+      const token = jwt.sign(
+        {
+          adminId: admin._id,
+        },
+        key,
+        {
+          expiresIn: "365d",
+        }
+      );
+      res.header("ad-token", token).status(200).send({
+        status: true,
+        token: token,
+        msg: "success",
+        data: admin,
+      });
+    } else {
+      res.status(400).json({
+        status: false,
+        msg: "Incorrect Password",
+        error: "error",
+      });
+    }
+  } else {
+    res.status(400).json({
+      status: false,
+      msg: "admin Doesnot Exist",
+      error: "error",
+    });
+  }
+};
